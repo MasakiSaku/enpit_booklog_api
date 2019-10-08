@@ -11,7 +11,8 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-engine = create_engine('postgresql://hogehoge:hogehoge@localhost:5432/test_db')#"postgresql://ユーザー名:パスワード@アドレス:ポート/データベース名"で指定
+db_url = os.environ.get('DATABASE_URL') or "postgresql://hogehoge:hogehoge@localhost:5432/test_db"
+engine = create_engine(db_url)
 Base = declarative_base()
 
 class Book(Base):
