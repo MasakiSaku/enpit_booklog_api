@@ -42,21 +42,21 @@ def request_test():
     isbn, place = request.form.get('isbn'), request.form.get('place')
     return f'isbn :{isbn}, place :{place}\n'
 
-#本のリストを返す
-@app.route('/get/all_list', methods=["GET"])
-def all_list():
+#本の一覧
+@app.route('/books', methods=["GET"])
+def book_list():
     entries = session.query(Book).all()
     entries_schema = EntrySchema(many=True)
     return jsonify({'entries': entries_schema.dump(entries)})
 
 #本の登録
-@app.route('/post/insert_book', methods=["POST"])
+@app.route('/books', methods=["POST"])
 def insert_book():
     isbn, place = request.form.get('isbn'), request.form.get('place')
     book = Book(isbn = int(isbn), place = place)
     session.add(book)
     session.commit()
-    return 'success'
+    return 'success',201
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
