@@ -58,5 +58,12 @@ def insert_book():
     session.commit()
     return 'success',201
 
+#本の削除
+@app.route('/books/<int:isbn>', methods=["DELETE"])
+def delete_book(isbn):
+    session.query(Book).filter(Book.isbn == isbn).delete()
+    session.commit()
+    return '',204
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
