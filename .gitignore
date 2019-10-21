@@ -1,0 +1,8 @@
+.DS_Store
+api/__pycache__/config.cpython-37.pyc
+api/__pycache__/database.cpython-37.pyc
+__pycache__/config.cpython-37.pyc
+api/__pycache__/__init__.cpython-37.pyc
+api/models/__pycache__/__init__.cpython-37.pyc
+api/models/__pycache__/book.cpython-37.pyc
+api/views/__pycache__/book.cpython-37.pyc
