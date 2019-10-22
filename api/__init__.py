@@ -10,6 +10,7 @@ def create_app():
 
     #DBの設定
     app.config.from_object('config.Config')
+    app.config['JSON_AS_ASCII'] = False
     db.init_app(app)
     app.register_blueprint(book_router, url_prefix='/api')
 

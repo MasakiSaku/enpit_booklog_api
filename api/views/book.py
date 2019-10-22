@@ -10,11 +10,11 @@ book_router = Blueprint('book_router', __name__)
 def hello_world():
     return 'BookLogAPIへようこそ'
 
-#POSTされたisbnを返す（テスト用）
+#POSTされたtitleを返す（テスト用）
 @book_router.route('/request_test', methods=["POST"])
 def request_test():
-    isbn, place = request.form.get('isbn'), request.form.get('place')
-    return f'isbn :{isbn}, place :{place}\n'
+    title, place_id = request.form.get('title'), request.form.get('place_id')
+    return f'title :{title}, place_id :{place_id}\n'
 
 
 #本の一覧
@@ -28,13 +28,13 @@ def book_list():
 #本の登録
 @book_router.route('/books', methods=["POST"])
 def insert_book():
-    isbn, place = request.form.get('isbn'), request.form.get('place')
-    Book.insert_book(isbn,place)
+    title, place_id = request.form.get('title'), request.form.get('place_id')
+    Book.insert_book(title,place_id)
     return 'success'
 
 
 #本の削除
-@book_router.route('/books/<int:isbn>', methods=["DELETE"])
-def delete_book(isbn):
-    Book.delete_book(isbn)
+@book_router.route('/books/<int:id>', methods=["DELETE"])
+def delete_book(id):
+    Book.delete_book(id)
     return ''
