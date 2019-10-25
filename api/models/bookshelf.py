@@ -15,8 +15,8 @@ class BookShelf(db.Model):
         
         return bookshelf_list
 
-    def insert_bookshelf(id, name):
-        bookshelf = BookShelf(id = id, name = name)
+    def insert_bookshelf(name):
+        bookshelf = BookShelf(name = name)
         db.session.add(bookshelf)
         db.session.commit()
         return 'success'
