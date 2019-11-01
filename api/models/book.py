@@ -22,9 +22,10 @@ class Book(db.Model):
         db.session.commit()
         return 'success'
 
-    def edit_book(id, title):
+    def edit_book(id, title, place_id):
         editbook = db.session.query(Book).filter(Book.id == id).first()
-        editbook.title = "9999999"
+        editbook.title = title
+        editbook.place_id = place_id
         db.session.commit()
 
     def delete_book(id):
