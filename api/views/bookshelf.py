@@ -21,6 +21,12 @@ def insert_bookshelf():
     BookShelf.insert_bookshelf(name)
     return 'success'
 
+#本棚の編集
+@bookshelf_router.route('/bookshelfs/<int:id>', methods=["PATCH"])
+def edit_bookshelf(id):
+    name = request.form.get('name')
+    BookShelf.edit_bookshelf(id, name)
+    return 'success'
 
 #本棚の削除
 @bookshelf_router.route('/bookshelfs/<int:id>', methods=["DELETE"])
