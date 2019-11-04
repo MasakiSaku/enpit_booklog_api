@@ -32,6 +32,13 @@ def insert_book():
     Book.insert_book(title,place_id)
     return 'success'
 
+#本の編集
+@book_router.route('/books/<int:id>', methods=["PATCH"])
+def edit_book(id):
+    title, place_id = request.form.get('title'), request.form.get('place_id')
+    Book.edit_book(id, title, place_id)
+    return 'success'
+
 
 #本の削除
 @book_router.route('/books/<int:id>', methods=["DELETE"])
