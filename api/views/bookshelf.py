@@ -17,14 +17,18 @@ def bookshelf_list():
 #本棚の登録
 @bookshelf_router.route('/bookshelfs', methods=["POST"])
 def insert_bookshelf():
-    name = request.form.get('name')
+    data = request.data.decode('utf-8')
+    data = json.loads(data)
+    name = data['name']
     BookShelf.insert_bookshelf(name)
     return 'success'
 
 #本棚の編集
 @bookshelf_router.route('/bookshelfs/<int:id>', methods=["PATCH"])
 def edit_bookshelf(id):
-    name = request.form.get('name')
+    data = request.data.decode('utf-8')
+    data = json.loads(data)
+    name = data['name']
     BookShelf.edit_bookshelf(id, name)
     return 'success'
 
